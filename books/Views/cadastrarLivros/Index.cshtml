@@ -1,0 +1,47 @@
+﻿@model IEnumerable<books.Models.cadastrarLivros>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Status dos meus livros</h2>
+
+<p>
+    @Html.ActionLink("Deseja cadastrar um novo livro?", "Create")
+</p>
+<br />
+<table class="table">
+    <tr class="success">
+        <th>
+            @Html.DisplayNameFor(model => model.livroName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.livroGenero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.livroStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.livroName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.livroGenero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.livroStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LivroId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LivroId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LivroId })
+        </td>
+    </tr>
+}
+
+</table>

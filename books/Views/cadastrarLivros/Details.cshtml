@@ -1,0 +1,43 @@
+﻿@model books.Models.cadastrarLivros
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cadastrarLivros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.livroName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.livroName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.livroGenero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.livroGenero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.livroStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.livroStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LivroId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
