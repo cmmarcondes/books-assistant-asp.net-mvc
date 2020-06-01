@@ -15,8 +15,34 @@ namespace books.Controllers
         private contexto db = new contexto();
 
         // GET: cadastrarLivros
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewBag.NomeParam = String.IsNullOrEmpty(sortOrder) ? "Nome_Desc" : "";
+            ViewBag.StatusParam = sortOrder == "Status" ? "Status_Desc" : "Status";
+            var livros = from s in db.Livros
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                livros = livros.Where(s => s.livroName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch(sortOrder)
+            {
+                case "Nome_desc":
+                    livros = livros.OrderByDescending(s => s.livroName);
+                        break;
+                case "Status":
+                    livros = livros.OrderBy(s => s.livroStatus);
+                    break;
+                case "Status_Desc":
+                    livros = livros.OrderByDescending(s => s.livroStatus);
+                        break;
+                default:
+                    livros = livros.OrderBy(s => s.livroName);
+                    break;
+            }
+
             return View(db.Livros.ToList());
         }
 

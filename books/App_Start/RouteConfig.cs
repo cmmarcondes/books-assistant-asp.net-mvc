@@ -16,7 +16,7 @@ namespace books
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Lidos", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "cadastrarLivros", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
