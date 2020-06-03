@@ -56,6 +56,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,12 +130,30 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\cadastrarLivrosController.cs" />
-    <Compile Include="Controllers\LidosController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>loginData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\cadastrarLivros.cs" />
     <Compile Include="Models\contexto.cs" />
+    <Compile Include="Models\loginData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>loginData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loginData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>loginData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loginData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>loginData.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +169,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\loginData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>loginData.edmx</DependentUpon>
+      <LastGenOutput>loginData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\loginData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>loginData.edmx</DependentUpon>
+      <LastGenOutput>loginData.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\FontAwesome.otf" />
@@ -156,6 +186,13 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <EntityDeploy Include="Models\loginData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>loginData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\loginData.edmx.diagram">
+      <DependentUpon>loginData.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -178,12 +215,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Lidos\Index.cshtml" />
     <Content Include="Views\cadastrarLivros\Create.cshtml" />
     <Content Include="Views\cadastrarLivros\Delete.cshtml" />
     <Content Include="Views\cadastrarLivros\Details.cshtml" />
     <Content Include="Views\cadastrarLivros\Edit.cshtml" />
     <Content Include="Views\cadastrarLivros\Index.cshtml" />
+    <Content Include="fonts\Asap-Regular.ttf" />
+    <Content Include="fonts\Audiowide-Regular.ttf" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -200,6 +239,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
