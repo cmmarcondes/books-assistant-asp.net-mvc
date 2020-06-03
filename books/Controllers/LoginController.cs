@@ -22,7 +22,7 @@ namespace books.Controllers
                 var userDetails = db.Account.Where(x => x.name == account.name && x.password == account.password).FirstOrDefault();
                 if(userDetails == null)
                 {
-                    account.loginError = "Wrong username or pass";
+                    account.loginError = "Nome de usuário ou senha incorreto.";
                     return View("Index", account);
                 }
                 else

@@ -18,11 +18,11 @@ namespace books.Models
     {
         public int id { get; set; }
         [DisplayName("Usuário")]
-        [Required(ErrorMessage ="This field is required")]
+        [Required(ErrorMessage ="Esse campo é obrigatório.")]
         public string name { get; set; }
         [DataType(DataType.Password)]
         [DisplayName("Senha")]
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Esse campo é obrigatório.")]
         public string password { get; set; }
 
         public string loginError { get; set; }
