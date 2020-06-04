@@ -31,7 +31,6 @@ namespace books.Controllers
                     return RedirectToAction("Index", "cadastrarLivros");
                 }
             }
-            return View();
-        }
+            }
     }
 }

@@ -15,85 +15,123 @@
     <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <title>Login</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
         body {
+            background-color: #23232e;
+        }
+        .title {
+            font-size: 32px;
+            letter-spacing: 2px;
+            color: #b6b6b6;
+        }
+        .wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 0 20px;
+            background-color: #141418;
+        }
+        .contact-form {
+            max-width: 50%;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 5px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            background-color: #040d15;
-            color: white;
+            flex-direction: column;
+        }
+        .input-fields {
+            display: flex;
+        }
+        .input-fields{
+            width: 100%;
+        }
+            .input-fields .single-line {
+                background-color: #141418;
+                font-size: 16px;
+                position: relative;
+                margin: 10px 0;
+                border: 0;
+                width: 300px;
+                border-bottom: 2px solid #18bc9c;
+                padding: 10px;
+                color: #b6b6b6;
+            }
+        ::-webkit-input-placeholder {
+            color: #464343;
+            font-size: 16px;
+        }
+        .btn-gr {
+            position: relative;
+            display: inline-block;
+            padding: 6px 18px;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            border-radius: 40px;
+            background: linear-gradient(90deg, #0162c8, #18bc9c);
+            border: none;
+            overflow: hidden;
             font-family: sans-serif;
         }
-
-        .titulo {
-    font-size: 20px;
-    font-family: sans-serif;
-    color: white;
-}
-
-.btn-gr {
-    position: relative;
-    display: inline-block;
-    padding: 12px 36px;
-    margin: 10px 0;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 18px;
-    letter-spacing: 2px;
-    border-radius: 40px;
-    background: linear-gradient(90deg, #0162c8, #55e7fc);
-    border: none;
-    overflow: hidden;
-    font-family: sans-serif;
-}
     </style>
     
 </head>
 <body>
-    <div id="login-div">
-        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
-        {
-            <table>
-                <tr>
-                    <td></td>
-                    <td class="titulo">BOOK ASSISTANT</td>
-                    <br />
-                </tr>
-               
-                <tr>
-                    <td>@Html.LabelFor(model => model.name)</td>
-                    <td>@Html.EditorFor(model => model.name)</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>@Html.ValidationMessageFor(model => model.name)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(model => model.password)</td>
-                    <td>@Html.EditorFor(model => model.password)</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>@Html.ValidationMessageFor(model => model.password)</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label class="field-validation-error">@Html.DisplayFor(model => model.loginError)</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input class="btn-gr" type="submit" name="name" value="Login" />
-                        <input class="btn-gr" type="reset" name="name" value="Clear" />
-                    </td>
-                </tr>
-            </table>
-        }
-    </div>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+    {
+                    <table class="wrapper" autocomplete="off">
+                        <tbody class="contact-form">
+                            <tr class="title">
+                                <td></td>
+                                <td>BOOK ASSISTANT</td>
+                                <br />
+                            </tr>
 
-</body>
-</html>
+                            <tr class="input-fields">
+                                <td>@Html.EditorFor(model => model.name, new { htmlAttributes = new { placeholder = "Usuário", autocomplete = "off" } })</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>@Html.ValidationMessageFor(model => model.name)</td>
+                            </tr>
+                            <tr class="input-fields">
+                                <td>@Html.EditorFor(model => model.password, new { htmlAttributes = new { placeholder = "Senha" } })</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>@Html.ValidationMessageFor(model => model.password)</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input class="btn-gr" type="submit" name="name" value="Login" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2">
+                                    @Html.DisplayFor(model => model.loginError)
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+            }
+
+
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+        </body>
+        </html>
